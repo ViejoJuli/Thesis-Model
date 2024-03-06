@@ -5,7 +5,6 @@ TO-DOs:
 
 '''
 
-
 import streamlit as st
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
@@ -91,11 +90,13 @@ def main():
     # Find info in Knowledge database
     if query:
         docs = VectorStore.similarity_search(query=query, k=3)
-        # st.write(docs) # write nearest chunks
+        st.write(docs)  # write nearest chunks
         llm = OpenAI(temperature=0.9, model_name='gpt-3.5-turbo')
         chain = load_qa_chain(llm=llm, chain_type="stuff")
         with get_openai_callback() as cb:
             response = chain.run(input_documents=docs, question=query)
+            # TODO: Modify prompts, and review current prompts
+
             # To know costs
             print(cb)
         st.write(response)
