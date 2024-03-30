@@ -1,0 +1,11 @@
+llama-index-embeddings-azure-openai
+llama-index
+llama-index-llms-azure-openai
+ipykernel
+python-dotenv
+tensorflow
+trulens-eval
+utils
+nest_asyncio
+sentence-transformers
+faiss-cpu # for faiss in cpu, there is faiss in CUDA also
