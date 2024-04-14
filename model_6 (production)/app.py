@@ -26,14 +26,16 @@ with st.sidebar:
     add_vertical_space(5)
     st.write('Made with Love')
 
+
 def load_model():
     openai.api_type = "azure"
     openai.api_base = os.getenv('OPENAI_ENDPOINT')
     openai.api_key = os.getenv('OPENAI_API_KEY')
     openai.api_version = "2023-09-15-preview"
     llm_model = 'gpt-35-turbo-jdrios'
-    llm = OpenAI(temperature = 0,  engine=llm_model)
+    llm = OpenAI(temperature=0,  engine=llm_model)
     return llm
+
 
 def main():
     st.header("Welcome to Assist Tool")
@@ -41,9 +43,9 @@ def main():
 
     # Load Embeddigs DB
     index_name = "thesis-model-1"
-    emb_model = "sentence-transformers/all-mpnet-base-v2" # Encoder
+    emb_model = "sentence-transformers/all-mpnet-base-v2"  # Encoder
     embeddings = HuggingFaceHubEmbeddings(repo_id=emb_model,
-                                        huggingfacehub_api_token=os.getenv('HUGGINGFACEHUB_API_TOKEN'))
+                                          huggingfacehub_api_token=os.getenv('HUGGINGFACEHUB_API_TOKEN'))
     # # embeddings from OpenAI
     # embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
     vectorStore = Pinecone.from_existing_index(index_name, embeddings)

@@ -9,3 +9,9 @@ utils
 nest_asyncio
 sentence-transformers
 faiss-cpu # for faiss in cpu, there is faiss in CUDA also
+langchainhub
+langchain
+ipywidgets # for better jupyter visualization
+stremalit # As application
+langchain_pinecone # For PineconeDB
+langchain-community 
