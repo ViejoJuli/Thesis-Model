@@ -124,11 +124,11 @@ def main():
     if 'sentiment' not in st.session_state:
         st.session_state['sentiment'] = 'neutral'
 
-    # Conection to DB
-    conn = st.connection("postgresql", type="sql")
+    # # Conection to DB
+    # conn = st.connection("postgresql", type="sql")
 
-    # Perform query.
-    df = conn.query('SELECT * FROM dummy;', ttl="10m")
+    # # Perform query.
+    # df = conn.query('SELECT * FROM dummy;', ttl="10m")
 
     # Display chat messages
     for message in st.session_state.messages:
@@ -174,6 +174,7 @@ def main():
 
         # Update costs
         st.session_state['costs'] += cb.total_cost
+        print(f"costs are {st.session_state['costs']}")
 
         with st.chat_message("user"):
             st.markdown(query)
